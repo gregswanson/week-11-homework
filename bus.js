@@ -9,9 +9,11 @@ var bus = function(driverName, color, gas){
 	this.color = color;
 	this.gas = gas;
 	this.studentEntersBus = function(){
-			var newStudent = new Student (result.name, result.gender, result.grade, result.gpa, result.detentions, result.sleepingInClass, result.catchPhrase);
-	  		this.studentsOnTheBus.push( newStudent);
-		console.log(studentsOnTheBus);
+			prompt.get(['name', 'gender', 'grade', 'gpa', 'detentions', 'sleepingInClass', 'catchPhrase'], function(err, result) {
+  			var student = new Student(result.name, result.gender, result.grade, result.gpa, result.detentions, result.sleepingInClass, result.catchPhrase);
+  			this.studentsOnTheBus.push(student);
+	});
+
 		};
 	this.busChatter = function(){
 		for(var i = 0; i < this.studentsOnTheBus.length; i++){
