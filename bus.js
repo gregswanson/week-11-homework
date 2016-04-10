@@ -10,8 +10,8 @@ var bus = function(driverName, color, gas){
 	this.gas = gas;
 	this.studentEntersBus = function(){
 			prompt.get(['name', 'gender', 'grade', 'gpa', 'detentions', 'sleepingInClass', 'catchPhrase'], function(err, result) {
-  			var student = new Student(result.name, result.gender, result.grade, result.gpa, result.detentions, result.sleepingInClass, result.catchPhrase);
-  			this.studentsOnTheBus.push(student);
+  			var newStudent = new Student(result.name, result.gender, result.grade, result.gpa, result.detentions, result.sleepingInClass, result.catchPhrase);
+  			this.studentsOnTheBus.push(newStudent);
 	});
 
 		};
