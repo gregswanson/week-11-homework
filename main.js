@@ -8,11 +8,12 @@ var busOne = new bus("Dave", "Green", 10);
 
 busOne.studentEntersBus();
 
+//busOne.busChatter();
 
-var studentOne = new Student();
+// var studentOne = new Student();
 
-console.log(studentOne.name) 
+// console.log(studentOne.name) 
 
-//console.log(busOne.studentsOnTheBus.length);
+// //console.log(busOne.studentsOnTheBus.length);
 
 

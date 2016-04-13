@@ -1,4 +1,4 @@
-var student = require('./student.js');
+var Student = require('./student.js');
 var prompt = require('prompt');
 var fs = require('fs');
 
@@ -7,28 +7,46 @@ var fs = require('fs');
 ////////
 
 var bus = function(driverName, color, gas){
- 	this.studentsOnTheBus = [];
+ 	var studentsOnTheBus = [];
 	this.driverName = driverName;
 	this.color = color;
 	this.gas = gas;
 	this.studentEntersBus = function(){
-			prompt.get(['name', 'gender', 'grade', 'gpa', 'detentions', 'sleepingInClass', 'catchPhrase'], function(err, result) {
-  			var newStudent = new Student(result.name, result.gender, result.grade, result.gpa, result.detentions, result.sleepingInClass, result.catchPhrase);
-  			
-  			// fs.appendFile('log.txt', newStudent, 'utf8', function (err) {
-  			// 	if (err) return console.log(err);
-					// });
-
-  			console.log(newStudent);
-  			this.studentsOnTheBus.push(newStudent);
-	});
+		function getInfo(){
+					prompt.get(['name', 'gender', 'grade', 'gpa', 'detentions', 'sleepingInClass', 'catchPhrase', 'add_another_student_yes_or_no'], function(err, result) {
+						var resultName = result.name;
+						var resultGender = result.gender;
+						var resultGrade = result.grade;
+						var resultGpa = result.gpa;
+						var resultDetentions = result.detentions;
+						var resultSleepingInClass = result.sleepingInClass;
+						var resultCatchPhrase = result.catchPhrase;
+						var answer = result.add_another_student_yes_or_no;
+		  			
+		  			var newStudent = new Student(resultName, resultGender, resultGrade, resultGpa, resultDetentions, resultSleepingInClass, resultCatchPhrase);
+		  			
+		  			studentsOnTheBus.push(newStudent);
+		  			// fs.appendFile('log.txt', newStudent, 'utf8', function (err) {
+		  			// 	if (err) return console.log(err);
+							// });
+					if (answer == 'yes') {
+						getInfo();
+					} else {
+						//console.log(studentsOnTheBus);
+						busChatter();
+					}
+		  		
+			});
+		}
+			getInfo();
 		};
 		
-	this.busChatter = function(){
-		//console.log("busChatter");
-		for(var i = 0; i < this.studentsOnTheBus.length; i++){
-			if (student.canStudentHaveFun){
-						console.log(this.studentsOnTheBus[i].student.name + " catch phrase: " + this.studentsOnTheBus[i].student.catchPhrase);
+	 var busChatter = function(){
+		console.log(studentsOnTheBus.length);
+		for(var i = 0; i < studentsOnTheBus.length; i++){
+			if (studentsOnTheBus[i].canStudentHaveFun() == true){
+						console.log(studentsOnTheBus[i].name + " catch phrase: " + studentsOnTheBus[i].catchPhrase);
+						//console.log(studentsOnTheBus[i].canStudentHaveFun());
 					}
 		}
 	}

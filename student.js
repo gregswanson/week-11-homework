@@ -13,8 +13,10 @@ var Student = function(name, gender, grade, gpa, detentions, sleepingInClass, ca
   this.canStudentHaveFun = function(){
     if((this.detentions < 10) && (this.gpa > 2)){
       console.log("This student can have fun!");
+      return true;
     }else{
       console.log("There will be no fun");
+      return false;
     }
   };
 };
